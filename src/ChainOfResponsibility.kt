@@ -1,25 +1,25 @@
 class MoneyPile(val value: Int, var quantity: Int, var nextPile: MoneyPile?) {
     fun canTakeSomeBill(want: Int): Boolean = (want / this.value) > 0
 
-    fun canWithdraw(amount: Int): Boolean {
-        var a = amount
+    fun canWithdraw(withdrawAmount: Int): Boolean {
+        var amount = withdrawAmount
         var quantity = this.quantity
 
-        while (canTakeSomeBill(want = a)) {
+        while (canTakeSomeBill(want = amount)) {
             if (quantity == 0) {
                 break
             }
 
-            a -= this.value
+            amount -= this.value
             quantity -= 1
         }
 
-        if (a <= 0) {
+        if (amount <= 0) {
             return true
         }
 
         nextPile?.let {
-            return it.canWithdraw(amount = a)
+            return it.canWithdraw(withdrawAmount = amount)
         }
 
         return false
@@ -28,7 +28,7 @@ class MoneyPile(val value: Int, var quantity: Int, var nextPile: MoneyPile?) {
 
 class ATM(val moneyPile: MoneyPile) {
     fun canWithdraw(amount: Int) {
-        println("Can withdraw: ${moneyPile.canWithdraw(amount = amount)}")
+        println("Can withdraw: ${moneyPile.canWithdraw(withdrawAmount = amount)}")
     }
 }
 
