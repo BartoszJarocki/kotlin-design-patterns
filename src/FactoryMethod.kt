@@ -24,14 +24,14 @@ class UnitedStatesDollar : Currency {
 }
 
 enum class Country {
-    unitedStates, spain, uk, greece
+    UnitedStates, Spain, UK, Greece
 }
 
 object CurrencyFactory {
     fun currency(country: Country): Currency? {
         when (country) {
-            Country.spain, Country.greece -> return Euro()
-            Country.unitedStates -> return UnitedStatesDollar()
+            Country.Spain, Country.Greece -> return Euro()
+            Country.UnitedStates -> return UnitedStatesDollar()
             else -> return null
         }
     }
@@ -40,8 +40,8 @@ object CurrencyFactory {
 fun main(args: Array<String>) {
     val noCurrencyCode = "No Currency Code Available"
 
-    println(CurrencyFactory.currency(Country.greece)?.code() ?: noCurrencyCode)
-    println(CurrencyFactory.currency(Country.spain)?.code() ?: noCurrencyCode)
-    println(CurrencyFactory.currency(Country.unitedStates)?.code() ?: noCurrencyCode)
-    println(CurrencyFactory.currency(Country.uk)?.code() ?: noCurrencyCode)
+    println(CurrencyFactory.currency(Country.Greece)?.code() ?: noCurrencyCode)
+    println(CurrencyFactory.currency(Country.Spain)?.code() ?: noCurrencyCode)
+    println(CurrencyFactory.currency(Country.UnitedStates)?.code() ?: noCurrencyCode)
+    println(CurrencyFactory.currency(Country.UK)?.code() ?: noCurrencyCode)
 }
