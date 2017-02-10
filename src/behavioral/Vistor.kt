@@ -12,32 +12,22 @@ interface Planet {
 }
 
 class MoonJedah : Planet {
-    override fun accept(visitor: PlanetVisitor) {
-        visitor.visit(planet = this)
-    }
+    override fun accept(visitor: PlanetVisitor) = visitor.visit(planet = this)
 }
 
 class PlanetAlderaan : Planet {
-    override fun accept(visitor: PlanetVisitor) {
-        visitor.visit(planet = this)
-    }
+    override fun accept(visitor: PlanetVisitor) = visitor.visit(planet = this)
 }
 
 class PlanetCoruscant : Planet {
-    override fun accept(visitor: PlanetVisitor) {
-        visitor.visit(planet = this)
-    }
+    override fun accept(visitor: PlanetVisitor) = visitor.visit(planet = this)
 }
 
 class PlanetTatooine : Planet {
-    override fun accept(visitor: PlanetVisitor) {
-        visitor.visit(planet = this)
-    }
+    override fun accept(visitor: PlanetVisitor) = visitor.visit(planet = this)
 }
 
-class NameVisitor : PlanetVisitor {
-    var name = ""
-
+class NameVisitor(var name: String = "") : PlanetVisitor {
     override fun visit(planet: PlanetAlderaan) {
         name = "Alderaan"
     }
