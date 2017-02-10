@@ -22,8 +22,8 @@ class IntegerVariableExpression(val name: Char) : IntegerExpression {
         return context.lookup(name = name)
     }
 
-    override fun replace(name: Char, integerExpression: IntegerExpression): IntegerExpression {
-        if (name == this.name) {
+    override fun replace(character: Char, integerExpression: IntegerExpression): IntegerExpression {
+        if (character == this.name) {
             return integerExpression.copied()
         } else {
             return IntegerVariableExpression(name = this.name)
