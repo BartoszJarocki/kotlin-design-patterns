@@ -1,3 +1,5 @@
+package behavioral
+
 interface PrintStrategy {
     fun print(string: String): String
 }

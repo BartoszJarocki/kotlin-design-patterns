@@ -1,3 +1,5 @@
+package behavioral
+
 interface DoorCommand {
     fun execute()
 }

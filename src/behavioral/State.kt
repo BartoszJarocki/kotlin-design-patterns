@@ -1,3 +1,5 @@
+package behavioral
+
 class Context(var state: State = UnauthorizedState()) {
     var isAuthorized: Boolean = false
         get() {

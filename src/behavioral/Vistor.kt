@@ -1,3 +1,5 @@
+package behavioral
+
 interface PlanetVisitor {
     fun visit(planet: PlanetAlderaan)
     fun visit(planet: PlanetCoruscant)
