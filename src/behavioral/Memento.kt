@@ -4,9 +4,7 @@ import java.util.ArrayList
 
 class Memento(val savedState: String)
 
-class Originator {
-    private var state: String? = null
-
+class Originator(var state: String? = null) {
     fun set(state: String) {
         println("Originator: Setting state to $state")
 
@@ -26,16 +24,12 @@ class Originator {
     }
 }
 
-class Caretaker {
-    private val savedStates = ArrayList<Memento>()
-
+class Caretaker(val savedStates: ArrayList<Memento> = ArrayList<Memento>()) {
     fun addMemento(memento: Memento) {
         savedStates.add(memento)
     }
 
-    fun getMemento(index: Int): Memento {
-        return savedStates[index]
-    }
+    fun getMemento(index: Int): Memento = savedStates[index]
 }
 
 fun main(args: Array<String>) {
