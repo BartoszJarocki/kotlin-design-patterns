@@ -1,4 +1,4 @@
-package behavioral
+package creational
 
 interface Currency {
     fun symbol(): String
@@ -40,7 +40,7 @@ object CurrencyFactory {
 }
 
 fun main(args: Array<String>) {
-    val noCurrencyCode = "No behavioral.Currency Code Available"
+    val noCurrencyCode = "No creational.Currency Code Available"
 
     println(CurrencyFactory.currency(Country.Greece)?.code() ?: noCurrencyCode)
     println(CurrencyFactory.currency(Country.Spain)?.code() ?: noCurrencyCode)

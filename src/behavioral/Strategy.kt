@@ -1,31 +1,16 @@
 package behavioral
 
-interface PrintStrategy {
-    fun print(string: String): String
+class Printer(val strategy: (String) -> String) {
+    fun print(string: String): String = strategy.invoke(string)
 }
 
-class Printer(val strategy: PrintStrategy) {
-    fun print(string: String): String {
-        return strategy.print(string)
-    }
-}
-
-class UpperCaseStrategy : PrintStrategy {
-    override fun print(string: String): String {
-        return string.toUpperCase()
-    }
-}
-
-class LowerCaseStrategy : PrintStrategy {
-    override fun print(string: String): String {
-        return string.toLowerCase()
-    }
-}
+val lowerCaseFormatter: (String) -> String = String::toLowerCase
+val upperCaseFormatter: (String) -> String = String::toUpperCase
 
 fun main(args: Array<String>) {
-    var lower = Printer(strategy = LowerCaseStrategy())
+    val lower = Printer(strategy = lowerCaseFormatter)
     println(lower.print("O tempora, o mores!"))
 
-    var upper = Printer(strategy = UpperCaseStrategy())
+    val upper = Printer(strategy = upperCaseFormatter)
     println(upper.print("O tempora, o mores!"))
 }
