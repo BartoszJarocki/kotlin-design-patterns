@@ -16,13 +16,9 @@ class HAL9000DoorsOperations(doors: String) {
     val openCommand: DoorCommand = OpenCommand(doors = doors)
     val closeCommand: DoorCommand = CloseCommand(doors = doors)
 
-    fun close() {
-        closeCommand.execute()
-    }
+    fun close() = closeCommand.execute()
 
-    fun open() {
-        openCommand.execute()
-    }
+    fun open() = openCommand.execute()
 }
 
 fun main(args: Array<String>) {

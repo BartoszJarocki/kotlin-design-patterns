@@ -8,9 +8,7 @@ interface IntegerExpression {
 }
 
 class IntegerContext(var data: MutableMap<Char, Int> = mutableMapOf()) {
-    fun lookup(name: Char): Int {
-        return data[name]!!
-    }
+    fun lookup(name: Char): Int = data[name]!!
 
     fun assign(expression: IntegerVariableExpression, value: Int) {
         data[expression.name] = value
@@ -18,36 +16,22 @@ class IntegerContext(var data: MutableMap<Char, Int> = mutableMapOf()) {
 }
 
 class IntegerVariableExpression(val name: Char) : IntegerExpression {
-    override fun evaluate(context: IntegerContext): Int {
-        return context.lookup(name = name)
-    }
+    override fun evaluate(context: IntegerContext): Int = context.lookup(name = name)
 
     override fun replace(character: Char, integerExpression: IntegerExpression): IntegerExpression {
-        if (character == this.name) {
-            return integerExpression.copied()
-        } else {
-            return IntegerVariableExpression(name = this.name)
-        }
+        if (character == this.name) return integerExpression.copied() else return IntegerVariableExpression(name = this.name)
     }
 
-    override fun copied(): IntegerExpression {
-        return IntegerVariableExpression(name = this.name)
-    }
+    override fun copied(): IntegerExpression = IntegerVariableExpression(name = this.name)
 }
 
 class AddExpression(var operand1: IntegerExpression, var operand2: IntegerExpression) : IntegerExpression {
-    override fun evaluate(context: IntegerContext): Int {
-        return this.operand1.evaluate(context) + this.operand2.evaluate(context)
-    }
+    override fun evaluate(context: IntegerContext): Int = this.operand1.evaluate(context) + this.operand2.evaluate(context)
 
-    override fun replace(character: Char, integerExpression: IntegerExpression): IntegerExpression {
-        return AddExpression(operand1 = operand1.replace(character = character, integerExpression = integerExpression),
-                operand2 = operand2.replace(character = character, integerExpression = integerExpression))
-    }
+    override fun replace(character: Char, integerExpression: IntegerExpression): IntegerExpression = AddExpression(operand1 = operand1.replace(character = character, integerExpression = integerExpression),
+            operand2 = operand2.replace(character = character, integerExpression = integerExpression))
 
-    override fun copied(): IntegerExpression {
-        return AddExpression(operand1 = this.operand1, operand2 = this.operand2)
-    }
+    override fun copied(): IntegerExpression = AddExpression(operand1 = this.operand1, operand2 = this.operand2)
 }
 
 fun main(args: Array<String>) {

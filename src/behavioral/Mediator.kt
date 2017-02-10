@@ -16,15 +16,13 @@ class MessageMediator(val recipients: MutableList<Programmer> = ArrayList()) : M
     }
 
     override fun send(message: String) {
-        for (recipient in recipients) {
-            recipient.receive(message = message)
+        recipients.forEach {
+            it.receive(message = message)
         }
     }
 }
 
-fun spamMonster(message: String, worker: MessageSending) {
-    worker.send(message = message)
-}
+fun spamMonster(message: String, worker: MessageSending) = worker.send(message = message)
 
 fun main(args: Array<String>) {
     val messagesMediator = MessageMediator()
