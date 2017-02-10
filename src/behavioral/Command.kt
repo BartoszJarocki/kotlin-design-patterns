@@ -5,15 +5,11 @@ interface DoorCommand {
 }
 
 class OpenCommand(val doors: String) : DoorCommand {
-    override fun execute() {
-        println("Opened $doors")
-    }
+    override fun execute() = println("Opened $doors")
 }
 
 class CloseCommand(val doors: String) : DoorCommand {
-    override fun execute() {
-        println("Closed $doors")
-    }
+    override fun execute() = println("Closed $doors")
 }
 
 class HAL9000DoorsOperations(doors: String) {

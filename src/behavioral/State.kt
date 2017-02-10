@@ -2,15 +2,11 @@ package behavioral
 
 class Context(var state: State = UnauthorizedState()) {
     var isAuthorized: Boolean = false
-        get() {
-            return state.isAuthorized(context = this)
-        }
+        get() = state.isAuthorized(context = this)
 
 
     var userId: String? = null
-        get() {
-            return state.userId(context = this)
-        }
+        get() = state.userId(context = this)
 
 
     fun changeStateToAuthorized(userId: String) {
