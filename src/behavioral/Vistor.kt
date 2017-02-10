@@ -35,7 +35,6 @@ class PlanetTatooine : Planet {
     }
 }
 
-
 class NameVisitor : PlanetVisitor {
     var name = ""
 
@@ -57,12 +56,11 @@ class NameVisitor : PlanetVisitor {
 }
 
 fun main(args: Array<String>) {
-    val planets: MutableList<Planet> = mutableListOf(PlanetAlderaan(), PlanetCoruscant(), PlanetTatooine(), MoonJedah())
+    val planets = mutableListOf(PlanetAlderaan(), PlanetCoruscant(), PlanetTatooine(), MoonJedah())
 
-    planets.map {
-        val visitor = NameVisitor()
+    val visitor = NameVisitor()
+    planets.forEach {
         it.accept(visitor)
-
         println(visitor.name)
     }
 }
