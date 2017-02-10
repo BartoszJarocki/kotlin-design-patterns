@@ -35,8 +35,12 @@ class AuthorizedState(var userId: String) : State {
     override fun userId(context: Context) = userId
 }
 
+data class Tmp(val i: Int = 0)
+
 fun main(args: Array<String>) {
     val userContext = Context()
+
+    val tmp = Tmp()
 
     userContext.changeStateToAuthorized(userId = "admin")
     println("${userContext.isAuthorized}, ${userContext.userId}")
