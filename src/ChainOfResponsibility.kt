@@ -33,10 +33,10 @@ class ATM(val moneyPile: MoneyPile) {
 }
 
 fun main(args: Array<String>) {
-    val ten = MoneyPile(value = 10, quantity = 6, nextPile = null)
-    val twenty = MoneyPile(value = 20, quantity = 2, nextPile = ten)
-    val fifty = MoneyPile(value = 50, quantity = 2, nextPile = twenty)
-    val hundred = MoneyPile(value = 100, quantity = 1, nextPile = fifty)
+    val ten = MoneyPile(value = 10, quantity = 6, nextPile = null) // 60
+    val twenty = MoneyPile(value = 20, quantity = 2, nextPile = ten) // 40
+    val fifty = MoneyPile(value = 50, quantity = 2, nextPile = twenty) // 100
+    val hundred = MoneyPile(value = 100, quantity = 1, nextPile = fifty) // 100
 
     var atm = ATM(moneyPile = hundred)
     atm.canWithdraw(amount = 310) // Cannot because ATM has only 300
